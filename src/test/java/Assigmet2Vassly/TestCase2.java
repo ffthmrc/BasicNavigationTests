@@ -20,17 +20,18 @@ public class TestCase2 {
         driver.get("https://practice-cybertekschool.herokuapp.com");
 
        // Step 2. Verify that number of listed examples is equals to 48.
-        List<WebElement> allElements = driver.findElements(By.xpath("//*[@id=\"content\"]/ul"));
+        WebElement element = driver.findElement(By.xpath("//ul[@class='list-group']"));
+        List<WebElement> lst = element.findElements(By.xpath(".//li"));
+        int count =0;
+        for(WebElement each : lst){
 
-        String a ="";
-        for(int i = 0; i < allElements.size(); i++) {
-             a = allElements.get(i).getText();
+            String texts = each.getText();
+            System.out.println(texts);
+            count++;
         }
-        String[] b = a.split("\n");
-//        System.out.println(Arrays.toString(b));
-        int c = b.length;
+        System.out.println(count);
        // System.out.println(c);
-        boolean b1 = (c==48);
+        boolean b1 = (count==48);
         System.out.println("Verify that number of listed examples is equals to 48 : " +b1);
 
 
