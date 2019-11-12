@@ -8,14 +8,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestCase1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
     //Step 1. Go to https://practicecybertekschool.herokuapp.com
+        WebDriverManager.chromedriver().clearPreferences(); // google ' da gelen guncellemeleri otomatik guncelliyor.
+
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("https://practice-cybertekschool.herokuapp.com");
 
      //Step 2. Click on “Sign Up For Mailing List”
-        driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[43]/a")).click();
+        driver.findElement(By.linkText("Sign Up For Mailing List")).click();
+        //Thread.sleep(3000);
+
+
     //Step 3. Enter any valid name
         driver.findElement(By.name("full_name")).sendKeys("lordmenx");
     //Step 4. Enter any valid email
@@ -29,7 +34,7 @@ public class TestCase1 {
         String message = driver.findElement(By.name("signup_message")).getText();
         System.out.println("Actual message : " +message);
 
-        boolean b1 = message.equals("Thank you for signing up. Click the button below to return to the home page.");
+        boolean b1 = message.equals(" you for signing up. Click the button below to return to the home page.");
         System.out.println("Message status : " + b1);
 
         WebElement homeButton = driver.findElement(By.id("wooden_spoon"));
