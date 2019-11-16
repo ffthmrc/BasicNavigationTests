@@ -7,8 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 public class TestCase1 {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
     //Step 1. Go to https://practicecybertekschool.herokuapp.com
         WebDriverManager.chromedriver().clearPreferences(); // google ' da gelen guncellemeleri otomatik guncelliyor.
 
@@ -17,7 +18,8 @@ public class TestCase1 {
         driver.get("https://practice-cybertekschool.herokuapp.com");
 
      //Step 2. Click on “Sign Up For Mailing List”
-        driver.findElement(By.linkText("Sign Up For Mailing List")).click();
+        //driver.findElement(By.linkText("Sign Up For Mailing List")).click();
+        driver.findElement(By.xpath("//div/ul/li[43]/a")).click();  //  parent-children relationship
         //Thread.sleep(3000);
 
 
@@ -33,9 +35,12 @@ public class TestCase1 {
 
         String message = driver.findElement(By.name("signup_message")).getText();
         System.out.println("Actual message : " +message);
+    String expectedMessage = "Thank you for signing up. Click the button below to return to the home page.";
 
-        boolean b1 = message.equals(" you for signing up. Click the button below to return to the home page.");
-        System.out.println("Message status : " + b1);
+     //Assert.assertEquals(message,expectedMessage);
+        assert message.equals(expectedMessage);
+//        boolean b1 = message.equals("Thank you for signing up. Click the button below to return to the home page.");
+//        System.out.println("Message status : " + b1);
 
         WebElement homeButton = driver.findElement(By.id("wooden_spoon"));
         try{

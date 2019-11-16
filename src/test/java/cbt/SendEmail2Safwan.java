@@ -23,7 +23,7 @@ public class SendEmail2Safwan {
         next.click();
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input")).sendKeys("FM3018fm.");
+        driver.findElement(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input")).sendKeys("****");
         WebElement passwordnext = driver.findElement(By.xpath("//*[@id=\"passwordNext\"]/span/span"));
         passwordnext.click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
